@@ -8,12 +8,6 @@ test all the things
 
 ----
 
-later:
-update GA tag once we get a custom domain
-
-
-----
-
 
 <a href="http://twitter.com/share?url=https%3A%2F%2Fcassandraxia.com%2Fstoriesofkindness%2F%23i-had-an-encounter-at-a-gun-range&text=my%20text%20here" target="_blank">
 Share on Twitter</a>
