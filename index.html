@@ -40,9 +40,7 @@
 </script>
 
 
-<!-- https://github.com/garand/sticky -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="jquery.sticky.js"></script>
+<script src="vue.min.js"></script>
 
 
 
@@ -68,6 +66,7 @@ h1{
 h2{
   font-size: 3rem;
   margin-top: 0;
+  margin-bottom:24px;
 }
 
 section{
@@ -125,13 +124,6 @@ strong{
   letter-spacing: 0.03em;
 }
 
-.header-section{
-  display:grid; 
-  padding: 12px 0; 
-  font-weight: bold;
-  background-color: #fff;
-}
-
 .btn{
   display: inline-block;
   font-family: 'Playfair Display', serif;
@@ -149,16 +141,18 @@ strong{
   opacity: 0.9;
 }
 
-.sticky{
-  width: 100%; /* needed this to prevent .fixed from moving screen */
-  box-sizing: border-box; /* needed this or else width was bigger */
-}
-
 
 @media (max-width: 700px){
   .story-grid{
     grid-template-columns: 1fr;
   }
+}
+
+.share-links{
+  margin-top: 16px;
+}
+.share-links img{
+  max-width: 30px;
 }
 
 
@@ -167,13 +161,7 @@ strong{
 </head>
 
 <body>
-
-<section class="header-section sticky" style="background-color: white">
-  <h1 style="color: #4d4d4d; font-size: 16px">
-      Stories of kindness
-  </h1>
-</section>
-
+<div id="app">
 
 <h1>
   Stories of kindness
@@ -186,9 +174,11 @@ strong{
 <div class="story-grid">
 
 
+
 <div id="i-had-an-encounter-at-a-gun-range">
 <h2>I had an encounter at a gun range</h2>
 <div class="author">Cassandra Xia</div>
+<share-links hash="i-had-an-encounter-at-a-gun-range"></share-links>
 </div>
 
 <div>
@@ -213,6 +203,7 @@ Regardless of how you feel about guns, that day I learned a lesson about my own 
 <div id="i-attended-a-trump-rally-as-a-liberal">
 <h2>I attended a Trump rally as a liberal</h2>
 <div class="author">Anonymous</div>
+<share-links hash="i-attended-a-trump-rally-as-a-liberal"></share-links>
 </div>
 
 <div>
@@ -245,6 +236,7 @@ I've voted Democratic my whole life. I supported Barack Obama, I volunteered for
 <div id="i-changed-the-way-i-talk-about-blm">
 <h2>I changed the way I talk about BLM</h2>
 <div class="author">Ethan Holly</div>
+<share-links hash="i-changed-the-way-i-talk-about-blm"></share-links>
 </div>
 
 <div>
@@ -268,6 +260,7 @@ He's absolutely right about my privilege to be heard. There are some people from
 <div id="i-reframed-my-religion">
 <h2>I reframed my religion</h2>
 <div class="author">Anonymous</div>
+<share-links hash="i-reframed-my-religion"></share-links>
 </div>
 
 <div>
@@ -300,6 +293,7 @@ In summary: I un-learned the harmful things I'd been taught about the homeless a
 <div id="i-gave-birth-and-changed-my-perspective">
 <h2>I gave birth and changed my perspective</h2>
 <div class="author">Anonymous</div>
+<share-links hash="i-gave-birth-and-changed-my-perspective"></share-links>
 </div>
 
 <div>
@@ -315,20 +309,63 @@ I think life experiences more than anything change one. I think we are on the sa
 </div>
 
 
+</div> <!-- end app -->
 </body>
 
+<script type="text/x-template" id="share-links-template">
+<div class="share-links">
+  <a :href="facebookLink"><img src="fb.png"></a>
+  <a :href="twitterLink"><img src="twitter.png"></a>
+</div>
+</script>
+
+
+
 <script>
-  $(document).ready(function(){
-    $(".sticky").sticky({topSpacing:0});
-  });
 
-  $('.nav-link').each(function(){
-    const hash = this.hash; // #be-a-cto'
-    $(this).click(function(e){
-      $('html, body').animate({scrollTop: $(hash).offset().top -80 }, 'slow');
-      e.preventDefault(); // doesn't seem necessary
-    });
-  });
+const BASE_URL = 'https://cassandraxia.com/storiesofkindness';
+const SHARE_TEXT = 'I was moved by this story of kindness...';
 
+
+
+// function myFunction() {
+//   var copyText = document.getElementById("myInput");
+//   copyText.select();
+//   copyText.setSelectionRange(0, 99999)
+//   document.execCommand("copy");
+//   alert("Copied the text: " + copyText.value);
+// }
+
+
+Vue.component('share-links', {
+  props: {
+    hash: {type: String},
+  },
+  computed: {
+    websiteLink(){
+      const id = this.hash;
+      const element = document.getElementById(id);
+      if (typeof(element) != 'undefined' && element != null){
+        return BASE_URL + '#' + id;    
+      } else {
+        console.error('id ' + id + ' does not exist');
+      }
+    },
+    twitterLink(){
+      return 'http://twitter.com/share?url=' + encodeURIComponent(this.websiteLink) + '&text=' + encodeURIComponent(SHARE_TEXT);
+    },
+
+    facebookLink(){
+      return 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(this.websiteLink) + '&quote=' + encodeURIComponent(SHARE_TEXT);
+    }
+  },
+  template: '#share-links-template',
+});
+
+
+
+new Vue({
+  el: '#app',
+});
 </script>
 

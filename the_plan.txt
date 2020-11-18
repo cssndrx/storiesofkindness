@@ -1,0 +1,71 @@
+
+share by link — make the image
+
+
+test all the things
+
+
+
+----
+
+later:
+update GA tag once we get a custom domain
+
+
+----
+
+
+<a href="http://twitter.com/share?url=https%3A%2F%2Fcassandraxia.com%2Fstoriesofkindness%2F%23i-had-an-encounter-at-a-gun-range&text=my%20text%20here" target="_blank">
+Share on Twitter</a>
+
+
+<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcassandraxia.com%2Fstoriesofkindness%2F%23i-had-an-encounter-at-a-gun-range&quote=my%20text%20here" target="_blank">
+  Share on Facebook
+</a>
+
+
+
+
+<input type="text" value="Hello World" id="myInput">
+<button onclick="myFunction()">Copy text</button>
+
+---
+
+
+
+
+FACEBOOK
+
+https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcassandraxia.com%2Fstoriesofkindness%2F%23i-had-an-encounter-at-a-gun-range&amp;src=sdkpreparse
+
+<a href="https://www.facebook.com/sharer/sharer.php?u=example.org" target="_blank">
+  Share on Facebook
+</a>
+
+
+encodeURIComponent('https://cassandraxia.com/storiesofkindness/#i-had-an-encounter-at-a-gun-range')
+"https%3A%2F%2Fcassandraxia.com%2Fstoriesofkindness%2F%23i-had-an-encounter-at-a-gun-range"
+
+
+
+TWITTER
+
+https://stackoverflow.com/questions/4509275/can-one-style-a-custom-tweet-button-and-utilise-the-data-attributes
+
+
+<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="I enjoyed this story of kindness..." data-url="https://cassandraxia.com/storiesofkindness/#i-had-an-encounter-at-a-gun-range" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+
+<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+
+COPY TO CLIPBOARD
+
+https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_copy_clipboard
+
+https://stackoverflow.com/questions/51625169/click-on-text-to-copy-a-link-to-the-clipboard
+
